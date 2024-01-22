@@ -1,20 +1,2 @@
-Microsoft Teams meeting
 
-Join on your computer, mobile app or room device
-
-Click here to join the meeting
-
-Meeting ID: 393 530 538 34
-Passcode: jHNHtb
-
-Download Teams | Join on the web
-
-Or call in (audio only)
-
-+44 20 3321 5213,,252645472#   United Kingdom, London
-
-Phone Conference ID: 252 645 472#
-
-Find a local number | Reset PIN
-
-Learn more | Meeting options | Legal
+https://teams.microsoft.com/l/meetup-join/19%3ameeting_MTJiODE3ZmQtOWFmYi00OTBjLWI3OGQtY2I1MTgwNzc0ZTJk%40thread.v2/0?context=%7b%22Tid%22%3a%221d23ed27-6f11-4050-874b-7e04ca535809%22%2c%22Oid%22%3a%22633ef2ad-b03c-4eb9-a90a-697453566488%22%7d
