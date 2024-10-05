@@ -265,3 +265,18 @@ Update your Web API to support authentication if not already configured.
 
 
 ChatGPT can make mistakes. Check important info.
+
+
+
+
+
+If successful, you will receive a token.
+
+Access Protected Resource: Use the token received from the login response to access the protected route api/values. Include the token in the Authorization header as a Bearer token:
+
+makefile
+
+Authorization: Bearer your_jwt_token
+Conclusion
+This example demonstrates how to create a simple JWT authentication mechanism in a .NET Framework 4.5 Web API. Adjust the code as necessary for your authentication logic and
+
