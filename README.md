@@ -1,4 +1,34 @@
 
+public ClaimsPrincipal ValidateToken(string token)
+{
+    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
+    var tokenHandler = new JwtSecurityTokenHandler();
+
+    try
+    {
+        tokenHandler.ValidateToken(token, new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = securityKey,
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ClockSkew = TimeSpan.Zero
+        }, out SecurityToken validatedToken);
+
+        return (ClaimsPrincipal)validatedToken;
+    }
+    catch
+    {
+        return null; // Token is invalid
+    }
+}
+Running the Application
+
+
+
+
+
+
 ChatGPT 4o mini
 
 Log in
