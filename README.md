@@ -1,29 +1,39 @@
+ Token Validation Middleware
+Create middleware to validate the token on protected routes
 
-public ClaimsPrincipal ValidateToken(string token)
+public class TokenValidationAttribute : AuthorizeAttribute
 {
-    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
-    var tokenHandler = new JwtSecurityTokenHandler();
-
-    try
+    protected override bool IsAuthorized(HttpActionContext actionContext)
     {
-        tokenHandler.ValidateToken(token, new TokenValidationParameters
-        {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = securityKey,
-            ValidateIssuer = false,
-            ValidateAudience = false,
-            ClockSkew = TimeSpan.Zero
-        }, out SecurityToken validatedToken);
+        var token = actionContext.Request.Headers.Authorization?.Parameter;
+        if (token == null)
+            return false;
 
-        return (ClaimsPrincipal)validatedToken;
-    }
-    catch
-    {
-        return null; // Token is invalid
+        var tokenService = new TokenService();
+        var principal = tokenService.ValidateToken(token);
+
+        if (principal == null)
+            return false;
+
+        actionContext.RequestContext.Principal = principal;
+        return true;
     }
 }
-Running the Application
+7. Protecting Routes
+Use the TokenValidationAttribute to protect specific routes in your API:
 
+csh
+public class ValuesController : ApiController
+{
+    [HttpGet]
+    [Route("api/values")]
+    [TokenValidation]
+    public IHttpActionResult GetValues()
+    {
+        return Ok(new string[] { "value1", "value2" });
+    }
+}
+8. Token Validation Logic
 
 
 
